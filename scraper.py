@@ -1,4 +1,7 @@
-print("Hello, World!")
+import requests
+
+URL = "https://en.wikipedia.org/wiki/Table_football"
+page = requests.get(URL)
 
 def get_citations_needed_count(url):
   """
