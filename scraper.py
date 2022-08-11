@@ -1,7 +1,17 @@
 import requests
+from bs4 import BeautifulSoup
 
+# step 1: go get content
 URL = "https://en.wikipedia.org/wiki/Table_football"
 page = requests.get(URL)
+# print(page.content)
+
+soup = BeautifulSoup(page.content, "html.parser")
+print(soup)
+
+# parse raw html by parsing it
+# install beautifulsoup
+# import beautiful soup from bs4
 
 def get_citations_needed_count(url):
   """
