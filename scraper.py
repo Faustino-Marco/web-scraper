@@ -114,6 +114,8 @@ def get_citations_needed_count(url):
 
   """
   target_parent_class = "mw-parser-output"
+
+  # don't forget '_' in spaces for tag
   target_href = '/wiki/Wikipedia:Citation_needed'
 
   page = requests.get(url)
@@ -156,7 +158,7 @@ def get_citations_needed_count(url):
 
 
 
-print(get_citations_needed_count(URL))
+# print(get_citations_needed_count(URL))
 
 
 def get_citations_needed_report(url):
@@ -173,7 +175,21 @@ def get_citations_needed_report(url):
 
   etc.
   """
-  pass
+  target_href = '/wiki/Wikipedia:Citation_needed' 
+
+  para_link = URL
+  citations_response = requests.get(para_link)
+
+  para_soup = BeautifulSoup(citations_response.content, "html.parser")
+  para = para_soup("p")
+  for p in para:
+    if target_href in p.prettify():
+      return p.text
+  # list_items = para.select("p")
+  
+
+
+print(get_citations_needed_report(URL))
 
 # STRETCH
 
